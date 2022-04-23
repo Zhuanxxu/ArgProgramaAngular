@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url="https://frozen-stream-55323.herokuapp.com/authenticate"
+  url="http://localhost:8080/authenticate"
   currentUserSubject: BehaviorSubject<any>;
   constructor(private http:HttpClient) {
     console.log("El servicio de autenticacion esta corriendo");
@@ -18,6 +18,7 @@ export class AutenticacionService {
      console.log(credenciales);
      return this.http.post(this.url,credenciales).pipe(map(data=>{
       sessionStorage.setItem('currentUser', JSON.stringify(data));
+      this.currentUserSubject.next(data);
       return data
      }))
    }

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PortfolioService {
-  url:string="https://frozen-stream-55323.herokuapp.com/"
+  url:string="http://localhost:8080/"
   constructor(private http:HttpClient) { }
 
   obtenerDatos():Observable<any>

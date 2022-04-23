@@ -13,7 +13,7 @@ export class IniciarSesionComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private autenticationService:AutenticacionService, private ruta:Router) { 
     this.form=this.formBuilder.group(
       {
-        email:['',[Validators.required,Validators.email]],
+        username:['',[Validators.required,Validators.email]],
         password:['',[Validators.required,Validators.minLength(8)]],
 
         deviceInfo:this.formBuilder.group({
@@ -33,7 +33,7 @@ export class IniciarSesionComponent implements OnInit {
 
   get Email()
   {
-    return this.form.get('email')
+    return this.form.get('username')
   }
   get Password()
   {

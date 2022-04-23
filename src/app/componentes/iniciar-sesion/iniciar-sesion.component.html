@@ -3,7 +3,7 @@
 <form [formGroup]="form" class="m-5" (ngSubmit)="onEnviar($event)">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email</label>
-      <input type="email" formControlName="email" class="form-control" 
+      <input type="username" formControlName="username" class="form-control" 
      [ngClass] ="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}"
       id="exampleInputEmail1" aria-describedby="emailHelp">
       <div *ngIf="Email?.errors && Email?.touched">

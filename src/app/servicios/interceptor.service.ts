@@ -13,15 +13,13 @@ export class InterceptorService implements HttpInterceptor{
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log("comienzo intercept ver si llega");
     var currentUser=this.autenticacionServicio.UsuarioAutenticado;
-    if(currentUser && currentUser.accessToken)
+    if(currentUser && currentUser.token)
     {
       req=req.clone({
-        setHeaders:{
-          Authorization: `Bearer ${currentUser.accessToken}`
-        }
-      })
+        headers: req.headers.set('Authorization', 'Bearer ' + currentUser.token)
+      });
     }
-    console.log("Interceptor esta corriendo"+ JSON.stringify(currentUser));
+    console.log("Interceptor esta corriendo"+ JSON.stringify(currentUser.token));
     return next.handle(req);
   }
 }
