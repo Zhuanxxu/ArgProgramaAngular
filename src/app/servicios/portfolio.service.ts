@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PortfolioService {
   url:string="http://localhost:8080/"
+  username:any;
   constructor(private http:HttpClient) { }
   obtenerDatos():Observable<any>
   { 
@@ -16,5 +17,9 @@ export class PortfolioService {
   obtenerHello():Observable<any>
   {
     return this.http.get<any>(this.url+"ver/persona/1");
+  }
+  setUsername(user:string){
+    this.username = user;
+    console.log(this.username);
   }
 }
