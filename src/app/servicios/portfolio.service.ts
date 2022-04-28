@@ -8,10 +8,13 @@ import { Observable } from 'rxjs';
 export class PortfolioService {
   url:string="http://localhost:8080/"
   constructor(private http:HttpClient) { }
-
   obtenerDatos():Observable<any>
   { 
-    console.log(this.http.get<any>(this.url+"ver/personas"));
+    
     return this.http.get<any>(this.url+"ver/personas");
+  }
+  obtenerHello():Observable<any>
+  {
+    return this.http.get<any>(this.url+"ver/persona/1");
   }
 }

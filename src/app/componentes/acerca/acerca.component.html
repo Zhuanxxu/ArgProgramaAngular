@@ -2,12 +2,12 @@
     <div class="row portada">
 
             <div class="col-3">
-                <img src="assets/img/CV 300x300.jpg" class="img-fluid rounded-circle"  alt="img-fluid">
+                <img src="{{pathFoto}}" class="img-fluid rounded-circle"  alt="img-fluid">
             </div>
             <div class="col-9">
                 <div class="row">
                     <div class="col-11">
-                    <h1>Spitale Agustin - Full Stack developer Jr.</h1>
+                    <h1>{{titulo}}</h1>
                     </div>
                     <div class="col-1">
                         <a href="#" class="btn-right">
@@ -16,13 +16,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <p>25 años, Rosario Santa Fe </p>
-                    <p id="descripcion-texto">Soy estudiante avanzado de Ingenieria Industrial de la Universidad catolica argentina y me encuentro haciendo mi segunda pasantia en una
-                        empresa de Puerto General San Martin en el area de mantenimiento de barcazas. Siempre estoy intentando automatizar procesos
-                        para facilitar tanto mis tareas como las de los demas por lo cual la programacion siemrpe vino muy bien. 
-                        Siempre estoy intentando aprender nuevas herramientas para poder aplicarlas, ya que muchas veces para un problema que parece
-                        sin solucion alguien ya tuvo ese problema y lo resolvio
-                    </p>
+                    <p>{{edad}} años, Rosario Santa Fe </p>
+                    <p id="descripcion-texto">{{descripcion}}</p>
                     <input type="text" id="edit-descripcion" style="display: none;" oninput="myFunction2(this.value)">
                 </div>
             </div>

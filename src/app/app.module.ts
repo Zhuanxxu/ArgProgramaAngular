@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PortfolioService } from './servicios/portfolio.service';
 import { InterceptorService } from './servicios/interceptor.service';
+import { CrearCuentaComponent } from './componentes/crear-cuenta/crear-cuenta.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { InterceptorService } from './servicios/interceptor.service';
     SkillsComponent,
     ProyectosComponent,
     IniciarSesionComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    CrearCuentaComponent
   ],
   imports: [
     BrowserModule,

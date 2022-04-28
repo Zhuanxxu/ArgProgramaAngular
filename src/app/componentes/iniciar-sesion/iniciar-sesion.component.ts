@@ -48,5 +48,12 @@ export class IniciarSesionComponent implements OnInit {
       this.ruta.navigate(['/portfolio']);
     })
   }
+  onCrear()
+  {
+
+    console.log("hola")
+    this.ruta.navigate(['/crear-cuenta']);
+    
+  }
 
 }
