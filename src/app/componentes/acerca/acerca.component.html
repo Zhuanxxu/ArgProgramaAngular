@@ -2,7 +2,7 @@
     <div class="row portada">
 
             <div class="col-3">
-                <img src="{{pathFoto}}" class="img-fluid rounded-circle"  alt="img-fluid">
+                <img src="{{pathFotoPerfil}}" class="img-fluid rounded-circle"  alt="img-fluid">
             </div>
             <div class="col-9">
                 <div class="row">
@@ -16,7 +16,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <p>{{edad}} años, Rosario Santa Fe </p>
+                    <p>{{edad}} años, {{ciudad}} {{provincia}} </p>
+                    <p>Correo: {{correo}}</p>
                     <p id="descripcion-texto">{{descripcion}}</p>
                     <input type="text" id="edit-descripcion" style="display: none;" oninput="myFunction2(this.value)">
                 </div>
