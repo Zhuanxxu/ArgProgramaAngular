@@ -13,10 +13,8 @@ export class PortadaComponent implements OnInit {
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
     
-
-      this.pathFotoPortada=data[0].urlFotoPortada;
-  
-
+      this.pathFotoPortada=data.urlFotoPortada;
+      
     });
   }
 

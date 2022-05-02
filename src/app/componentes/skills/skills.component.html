@@ -6,40 +6,20 @@
             <h2>Soft Skills</h2>
         </div>
         <div class="row">
-            <div class="col-4">
-                
-                <div class="row">
-                    <div class="col-12 col-img-skills">
-                        <img src="{{pathFoto1}}" class="img-fluid img-formacion mx-auto" alt="">
-                        <div class="progress barra-skills mx-auto">
-                            <div class="progress-bar" role="progressbar" style="width: {{porcentaje1}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{porcentaje1}}%</div>
+            <ng-container *ngFor="let skill of skills;let indice=index">
+                <div class="col-4" *ngIf="indice>2">
+                    
+                    <div class="row">
+                        <div class="col-12 col-img-skills">
+                            <img src="{{skill.urlFoto}}" class="img-fluid img-formacion mx-auto" alt="">
+                            <div class="progress barra-skills mx-auto">
+                                <div class="progress-bar" role="progressbar" style="width: {{skill.porcentajeCompleto}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{skill.porcentajeCompleto}}%</div>
+                            </div>
+                            <p class="text-center">{{skill.descripcion}}</p>
                         </div>
-                        <p class="text-center">{{titulo1}}</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-4">
-                <div class="row">
-                    <div class="col-12 col-img-skills">
-                        <img src="{{pathFoto2}}" class="img-fluid img-formacion mx-auto" alt="">
-                        <div class="progress barra-skills mx-auto">
-                            <div class="progress-bar" role="progressbar" style="width: {{porcentaje2}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{porcentaje2}}%</div>
-                        </div>
-                        <p class="text-center">{{titulo2}}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="row">
-                    <div class="col-12 col-img-skills">
-                        <img src="{{pathFoto3}}" class="img-fluid img-formacion mx-auto" alt="">
-                        <div class="progress barra-skills mx-auto">
-                            <div class="progress-bar" role="progressbar" style="width: {{porcentaje3}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{porcentaje3}}%</div>
-                        </div>
-                        <p class="text-center">{{titulo3}}</p>
-                    </div>
-                </div>
-            </div>
+            </ng-container> 
         </div>
     </div>
 
@@ -48,39 +28,18 @@
         <div class="row">
             <h2>Hard Skills</h2>
         </div>
-        <div class="col-4">
-            
-            <div class="row">
-                <div class="col-12 col-img-skills">
-                    <img src="{{pathFoto4}}" class="img-fluid img-formacion mx-auto" alt="">
-                    <div class="progress barra-skills mx-auto">
-                        <div class="progress-bar" role="progressbar" style="width: {{porcentaje4}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{porcentaje4}}%</div>
+        <ng-container *ngFor="let skill of skills;let indice=index">
+            <div class="col-4" *ngIf="indice<=2">
+                
+                <div class="row">
+                    <div class="col-12 col-img-skills">
+                        <img src="{{skill.urlFoto}}" class="img-fluid img-formacion mx-auto" alt="">
+                        <div class="progress barra-skills mx-auto">
+                            <div class="progress-bar" role="progressbar" style="width: {{skill.porcentajeCompleto}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{skill.porcentajeCompleto}}%</div>
+                        </div>
+                        <p class="text-center">{{skill.descripcion}}</p>
                     </div>
-                    <p class="text-center">{{titulo4}}</p>
                 </div>
             </div>
-        </div>
-        <div class="col-4">
-            <div class="row">
-                <div class="col-12 col-img-skills">
-                    <img src="{{pathFoto5}}" class="img-fluid img-formacion mx-auto" alt="">
-                    <div class="progress barra-skills mx-auto">
-                        <div class="progress-bar" role="progressbar" style="width: {{porcentaje5}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{porcentaje5}}%</div>
-                    </div>
-                    <p class="text-center">{{titulo5}}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="row">
-                <div class="col-12 col-img-skills">
-                    <img src="{{pathFoto6}}" class="img-fluid img-formacion mx-auto" alt="">
-                    <div class="progress barra-skills mx-auto">
-                        <div class="progress-bar" role="progressbar" style="width: {{porcentaje6}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{porcentaje6}}%</div>
-                    </div>
-                    <p class="text-center">{{titulo6}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
+        </ng-container> 
 </div>

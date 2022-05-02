@@ -4,13 +4,17 @@
 
         <div class="col-2 rounded">
             
-                <img src="assets/img/logoArgNegro.png" class="img-fluid logo-arg" id="nav" alt="img-fluid">
+                <a href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa">
+
+                    <img src="assets/img/logoArgNegro.png" class="img-fluid logo-arg" id="nav" alt="img-fluid">
+
+                </a>
         </div>
         <div class="col-6"></div>
         <div class="col-3 my-auto btn-social"> 
             <div class="row">
                 <div class="col-4">
-                    <a href="#" class="fa-brands fa-linkedin-in fa-lg" ></a>
+                    <a href="www.linkedin.com/in/agustin-spitale" class="fa-brands fa-linkedin-in fa-lg" ></a>
                 </div>
                 <div class="col-4">
                     <a href="#" class="fa-brands fa-twitter fa-lg a-btn"></a>
@@ -23,7 +27,7 @@
         
         <div class="col-1 my-auto">
             <div class="row justify-content-center d-grid gap-2">
-                    <button type="button" class="btn btn-primary">Botton</button>
+                <a [routerLink]="['/iniciar-sesion']" [queryParams]="{debug: true}" class="btn btn-dark"> <b style="color: white;"> Logout </b></a>
             </div>
         </div>
 

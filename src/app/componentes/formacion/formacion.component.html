@@ -2,34 +2,14 @@
     <div class="row">
         <h1>Formacion Academica</h1>
     </div>
-    <div class="row row-formacion">
+    <div class="row row-formacion" *ngFor="let formacion of formaciones">
         <div class="col-2 my-auto">
-            <img class="img-fluid img-formacion" src="{{fotoLogo1}}" style="background-color: white;">
+            <img class="img-fluid img-formacion" src="{{formacion.urlFoto}}" style="background-color: white;">
         </div>
         <div class="col-10">
-            <h3>{{titulo1}} - {{instituto1}}</h3>
-            <p><b>{{fechaInicio1}} - actualidad</b></p>
-            <p>{{descripcion1}}</p>
-        </div>
-    </div>
-    <div class="row row-formacion">
-        <div class="col-2 my-auto">
-            <img class="img-fluid img-formacion" src="{{fotoLogo2}}" style="background-color: white;">
-        </div>
-        <div class="col-10">
-            <h3>{{titulo2}} - {{instituto2}}</h3>
-            <p><b>{{fechaInicio2}} - {{fechaFin2}}</b></p>
-            <p>{{descripcion2}}</p>
-        </div>
-    </div>
-    <div class="row row-formacion">
-        <div class="col-2 my-auto">
-            <img class="img-fluid img-formacion" src="{{fotoLogo3}}" style="background-color: white;">
-        </div>
-        <div class="col-10">
-            <h3>{{titulo3}} - {{instituto3}}</h3>
-            <p><b>{{fechaInicio3}} - {{fechaFin3}}</b></p>
-            <p>{{descripcion3}}</p>
+            <h3>{{formacion.titulo}} - {{formacion.instituto}}</h3>
+            <p><b>{{formacion.fechaIni}}</b> al <b>{{formacion.fechaFin}}</b></p>
+            <p>{{formacion.descripcion}}</p>
         </div>
     </div>
 

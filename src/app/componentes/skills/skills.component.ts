@@ -27,26 +27,28 @@ export class SkillsComponent implements OnInit {
   porcentaje4:any;
   porcentaje5:any;
   porcentaje6:any;
+  skills:any;
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
-      this.pathFoto1=data[0].skills[0].urlFoto;
-      this.pathFoto2=data[0].skills[1].urlFoto;
-      this.pathFoto3=data[0].skills[2].urlFoto;
-      this.pathFoto4=data[0].skills[3].urlFoto;
-      this.pathFoto5=data[0].skills[4].urlFoto;
-      this.pathFoto6=data[0].skills[5].urlFoto;
-      this.titulo1=data[0].skills[0].descripcion;
-      this.titulo2=data[0].skills[1].descripcion;
-      this.titulo3=data[0].skills[2].descripcion;
-      this.titulo4=data[0].skills[3].descripcion;
-      this.titulo5=data[0].skills[4].descripcion;
-      this.titulo6=data[0].skills[5].descripcion;
-      this.porcentaje1=data[0].skills[0].porcentajeCompleto;
-      this.porcentaje2=data[0].skills[1].porcentajeCompleto;
-      this.porcentaje3=data[0].skills[2].porcentajeCompleto;
-      this.porcentaje4=data[0].skills[3].porcentajeCompleto;
-      this.porcentaje5=data[0].skills[4].porcentajeCompleto;
-      this.porcentaje6=data[0].skills[5].porcentajeCompleto;
+      this.skills=data.skills;
+      this.pathFoto1=data.skills[0].urlFoto;
+      this.pathFoto2=data.skills[1].urlFoto;
+      this.pathFoto3=data.skills[2].urlFoto;
+      this.pathFoto4=data.skills[3].urlFoto;
+      this.pathFoto5=data.skills[4].urlFoto;
+      this.pathFoto6=data.skills[5].urlFoto;
+      this.titulo1=data.skills[0].descripcion;
+      this.titulo2=data.skills[1].descripcion;
+      this.titulo3=data.skills[2].descripcion;
+      this.titulo4=data.skills[3].descripcion;
+      this.titulo5=data.skills[4].descripcion;
+      this.titulo6=data.skills[5].descripcion;
+      this.porcentaje1=data.skills[0].porcentajeCompleto;
+      this.porcentaje2=data.skills[1].porcentajeCompleto;
+      this.porcentaje3=data.skills[2].porcentajeCompleto;
+      this.porcentaje4=data.skills[3].porcentajeCompleto;
+      this.porcentaje5=data.skills[4].porcentajeCompleto;
+      this.porcentaje6=data.skills[5].porcentajeCompleto;
     });
   }
 
