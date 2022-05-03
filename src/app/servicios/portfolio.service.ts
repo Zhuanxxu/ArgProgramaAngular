@@ -7,7 +7,7 @@ import { AcercaComponent } from '../componentes/acerca/acerca.component';
   providedIn: 'root'
 })
 export class PortfolioService {
-  url:string="https://thawing-citadel-18441.herokuapp.com/"
+  url:string="http://localhost:8080/"
   username:any;
   constructor(private http:HttpClient) { }
   obtenerDatos():Observable<any>

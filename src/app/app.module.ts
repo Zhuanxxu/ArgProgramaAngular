@@ -27,7 +27,7 @@ import { CrearCuentaComponent } from './componentes/crear-cuenta/crear-cuenta.co
     ProyectosComponent,
     IniciarSesionComponent,
     PortfolioComponent,
-    CrearCuentaComponent
+    CrearCuentaComponent,
   ],
   imports: [
     BrowserModule,

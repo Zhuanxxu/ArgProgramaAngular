@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url="https://thawing-citadel-18441.herokuapp.com/authenticate"
+  url="http://localhost:8080/authenticate"
   currentUserSubject: BehaviorSubject<any>;
   constructor(private http:HttpClient) {
     console.log("El servicio de autenticacion esta corriendo");

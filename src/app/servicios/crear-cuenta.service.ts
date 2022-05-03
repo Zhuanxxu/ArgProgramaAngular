@@ -6,7 +6,7 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CrearCuentaService {
-  url="https://thawing-citadel-18441.herokuapp.com/register"
+  url="http://localhost:8080/register"
 
   constructor(private http:HttpClient) {
     console.log("El servicio de crear cuenta esta corriendo");
