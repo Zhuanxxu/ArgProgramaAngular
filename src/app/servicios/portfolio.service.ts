@@ -28,4 +28,9 @@ export class PortfolioService {
     this.username = user;
     console.log(this.username);
   }
+
+  actualizarDatos():Observable<any>
+  {
+    return this.http.put<any>('http://localhost:8080/personas/editar/1?edad=25',)
+  }
 }

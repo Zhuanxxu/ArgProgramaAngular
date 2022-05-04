@@ -15,6 +15,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PortfolioService } from './servicios/portfolio.service';
 import { InterceptorService } from './servicios/interceptor.service';
 import { CrearCuentaComponent } from './componentes/crear-cuenta/crear-cuenta.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AcercaModalComponent } from './componentes/modals/acerca-modal/acerca-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +30,14 @@ import { CrearCuentaComponent } from './componentes/crear-cuenta/crear-cuenta.co
     IniciarSesionComponent,
     PortfolioComponent,
     CrearCuentaComponent,
+    AcercaModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [PortfolioService,
   {provide:HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}

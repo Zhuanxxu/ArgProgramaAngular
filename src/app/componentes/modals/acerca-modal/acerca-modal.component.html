@@ -1,0 +1,37 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <!--<label for="dateOfBirth">Date of birth</label>
+          <div class="input-group">
+                <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div>-->
+            
+            <form  class="m-5"  style="margin-bottom: 1vh !important;">
+                <label for="descripcion">Descripcion</label>
+                <input type="text" class="form-control">
+                <textarea name="descripcion" type="text" class="form-control" cols="40" rows="5" id="descripcion" formControlName="descripcion"></textarea>
+                <button type="submit" class="btn btn-dark">Enviar</button>
+            </form>
+          
+        
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+  
+<a class="btn-right">
+    <i class="fa fa-pen" (click)="open(content)"></i>
+</a>
+  
+  
+  <pre>{{ closeResult }}</pre>
