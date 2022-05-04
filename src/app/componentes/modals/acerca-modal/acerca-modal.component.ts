@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
@@ -10,8 +11,14 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class AcercaModalComponent implements OnInit {
   closeResult = '';
-  constructor(private modalService: NgbModal,private portfolioService:PortfolioService) { }
-
+  form:FormGroup;
+  constructor(private modalService: NgbModal,private portfolioService:PortfolioService,private formBuilder:FormBuilder) { 
+  this.form=this.formBuilder.group(
+    {
+      descripcion:[''],
+    }
+    )
+  }
   ngOnInit(): void {
   }
   open(content: any) {
@@ -37,10 +44,9 @@ export class AcercaModalComponent implements OnInit {
     event.preventDefault;
     //console.log("DATA:" + this.form.value.username);
     //console.log("DATA:" + this.Email);
-    this.portfolioService.IniciarSesion(this.form.value).subscribe(data=>{
-      console.log("DATA:" + JSON.stringify(data));
-      this.portfolioService.setUsername(this.form.value.username);
-      this.ruta.navigate(['/portfolio']);
+    this.portfolioService.actualizarDatos(this.form.value).subscribe(data=>{
+      //console.log("DATA:" + JSON.stringify(data));
+
     })
   }
 

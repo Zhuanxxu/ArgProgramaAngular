@@ -13,7 +13,7 @@
             <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
             </div>-->
             
-            <form  class="m-5"  style="margin-bottom: 1vh !important;">
+            <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="m-5"  style="margin-bottom: 1vh !important;">
                 <label for="descripcion">Descripcion</label>
                 <input type="text" class="form-control">
                 <textarea name="descripcion" type="text" class="form-control" cols="40" rows="5" id="descripcion" formControlName="descripcion"></textarea>
