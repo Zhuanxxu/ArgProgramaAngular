@@ -18,6 +18,8 @@ import { CrearCuentaComponent } from './componentes/crear-cuenta/crear-cuenta.co
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AcercaModalComponent } from './componentes/modals/acerca-modal/acerca-modal.component';
 import { FileUploadComponent } from './componentes/file-upload/file-upload.component';
+import { PortadaModalComponent } from './componentes/modals/portada-modal/portada-modal.component';
+import { FormacionModalComponent } from './componentes/modals/formacion-modal/formacion-modal.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { FileUploadComponent } from './componentes/file-upload/file-upload.compo
     CrearCuentaComponent,
     AcercaModalComponent,
     FileUploadComponent,
+    PortadaModalComponent,
+    FormacionModalComponent,
   ],
   imports: [
     BrowserModule,

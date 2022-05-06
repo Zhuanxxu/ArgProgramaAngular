@@ -1,24 +1,23 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { FileUploadService } from 'src/app/servicios/file-upload.service';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AcercaComponent } from '../acerca/acerca.component';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { FileUploadService } from 'src/app/servicios/file-upload.service';
 
 @Component({
-  selector: 'app-file-upload',
-  templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.css']
+  selector: 'app-portada-modal',
+  templateUrl: './portada-modal.component.html',
+  styleUrls: ['./portada-modal.component.css']
 })
-export class FileUploadComponent implements OnInit {
+export class PortadaModalComponent implements OnInit {
   selectedFiles?: FileList;
   currentFile?: File;
   progress = 0;
   message = '';
   path="http://localhost:8080/";
-  fileInfos?: Observable<any>;
   aux:any;
-  constructor(private uploadService: FileUploadService,private sanitizer: DomSanitizer) { }
+  closeResult = '';
+  constructor(private uploadService: FileUploadService,private sanitizer: DomSanitizer,private modalService: NgbModal) { }
   image: any;
   ngOnInit(): void {
 
@@ -34,14 +33,29 @@ export class FileUploadComponent implements OnInit {
       
       
   }
-
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
   upload(): void {
     this.progress = 0;
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       if (file) {
         this.currentFile = file;
-        this.uploadService.upload(this.currentFile,"perfil").subscribe({
+        this.uploadService.upload(this.currentFile,"portada").subscribe({
           next: (event: any) => {
             if (event.type === HttpEventType.UploadProgress) {
               this.progress = Math.round(100 * event.loaded / event.total);
@@ -69,6 +83,4 @@ export class FileUploadComponent implements OnInit {
       this.selectedFiles = undefined;
     }
   }
-  
-
 }

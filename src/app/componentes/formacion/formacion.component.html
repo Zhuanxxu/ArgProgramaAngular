@@ -1,6 +1,11 @@
 <div class="container-fluid formacion-container">
     <div class="row">
-        <h1>Formacion Academica</h1>
+        <div class="col-11">
+            <h1>Formacion Academica</h1>
+        </div>
+        <div class="col-1">
+            <app-formacion-modal></app-formacion-modal>
+        </div>
     </div>
     <div class="row row-formacion" *ngFor="let formacion of formaciones">
         <div class="col-2 my-auto">

@@ -25,6 +25,7 @@ export class AcercaComponent implements OnInit {
   tieneFoto:any;
   fotoPerfil:any;
   path="http://localhost:8080/";
+  lista:any;
   ngOnInit(): void {
     
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
@@ -42,20 +43,43 @@ export class AcercaComponent implements OnInit {
       this.ciudad=data.domicilio.localidad.ciudad;
       this.provincia=data.domicilio.localidad.provincia;
       this.correo=data.correo;
-      this.tieneFoto=data.fileDbs.id;
+      this.fotoPerfil=this.path + data.fileDbs.find((element: { lugar: string; }) => element.lugar == "perfil").path;
+      this.tieneFoto = this.fotoPerfil;
       this.fileUpload.tieneFotoFuncion(this.tieneFoto);
-      this.fileUpload.getFilesId(this.id).subscribe(data =>{
-        this.fotoPerfil = this.path + "imagen/" + data.id;
-        console.log("typo:" +typeof this.id);
-        console.log("hola " + this.id);
-        
-      })
+      //this.fotoPerfil= this.path +"filesUnico/"+this.id + "/perfil";
+  
+      
     });
-
-    
+    /*console.log("holaaaaaaaaaaaa" +this.id)
+    this.fileUpload.getFiles().subscribe(data2 =>{
+      
+      let lista: any[] = [];
+      data2.forEach(function (value: any){
+        lista.push(value);
+      
+      });
+      lista.forEach(item =>{
+        
+        if(item.id==this.id && item.lugar=="perfil"){
+          this.fotoPerfil = item.url;
+          
+        }
+      })
+    })*/
     
   }
   getCorreo(){
     return this.correo;
+  }
+
+  getPrueba(){
+    this.fileUpload.getFilesId(this.id,"perfil").subscribe(data =>{
+      //this.fotoPerfil = this.path + "imagen/" + data.id;
+      debugger
+      console.log("typo:" + data);
+      this.fotoPerfil=data;
+      console.log("hola " + data);
+      
+    })
   }
 }

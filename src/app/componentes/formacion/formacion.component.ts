@@ -26,11 +26,14 @@ export class FormacionComponent implements OnInit {
   descripcion3:any;
   instituto3:any;
   formaciones:any;
+  fotosEducaciones:any;
+  alls:any;
   constructor(private datosPorfolio:PortfolioService) { }
 
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
-    
+      this.alls=data;
+      this.fotosEducaciones=data.fileDbs
       this.formaciones=data.educacion;
       this.fotoLogo1=data.educacion[0].urlFoto;
       this.titulo1=data.educacion[0].titulo;

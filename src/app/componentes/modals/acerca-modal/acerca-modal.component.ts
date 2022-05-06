@@ -13,7 +13,7 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 export class AcercaModalComponent implements OnInit {
   closeResult = '';
   form:FormGroup;
-  title = 'Angular 13 File Upload';
+
   constructor(private modalService: NgbModal,private portfolioService:PortfolioService,private formBuilder:FormBuilder) {
  
   this.form=this.formBuilder.group(
@@ -52,7 +52,7 @@ export class AcercaModalComponent implements OnInit {
     event.preventDefault;
     //console.log("DATA:" + this.form.value.username);
     //console.log("DATA:" + this.Email);
-    this.portfolioService.actualizarDatos(this.form.value).subscribe(data=>{
+    this.portfolioService.actualizarDatosPersona(this.form.value).subscribe(data=>{
       
       //console.log("cambios:" + JSON.stringify(data));
     })

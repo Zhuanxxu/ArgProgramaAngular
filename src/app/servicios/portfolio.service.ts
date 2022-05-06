@@ -31,11 +31,34 @@ export class PortfolioService {
     console.log(this.username);
   }
 
-  actualizarDatos(parametros:any):Observable<any>
+  actualizarDatosPersona(parametros:any):Observable<any>
   {
-    const params = new HttpParams({fromString: 'nombre=agustin'});
-    const prueba = {nombre:"agu"}
+    
+    let params = new HttpParams();
+    //const params = new HttpParams({fromString: 'nombre=agustin'});
+    params = params.append("nombre",parametros.nombre)
+    params = params.append("apellido",parametros.apellido);
+    params = params.append("edad",parametros.edad);
+    params = params.append("descripcion", parametros.descripcion);
+    params = params.append("titulo", parametros.titulo);
+    const prueba = {nombre:"ag"}
+    console.log("aca parametros: " + params)
+    console.log("aca parametros: " + prueba)
     console.log(this.http.put<any>('http://localhost:8080/personas/editar/1',params))
     return this.http.put<any>('http://localhost:8080/personas/editar/1',params)
+  }
+  actualizarDatosEducacion(parametros:any):Observable<any>
+  {
+   
+    let params = new HttpParams();
+    //const params = new HttpParams({fromString: 'nombre=agustin'});
+    params = params.append("instituto",parametros.instituto)
+    params = params.append("porcentaje_terminacion",parametros.porcentaje_terminacion);
+    params = params.append("titulo",parametros.titulo);
+    params = params.append("descripcion", parametros.descripcion);
+    //params = params.append("persona_id", parametros.persona_id);
+  
+    console.log(this.http.put<any>('http://localhost:8080/educacion/editar/1',params))
+    return this.http.put<any>('http://localhost:8080/educacion/editar/1',params)
   }
 }
