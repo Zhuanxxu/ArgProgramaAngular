@@ -17,10 +17,14 @@ export class AcercaComponent implements OnInit {
   ciudad:any;
   provincia:any;
   prueba:any;
+  id:any;
+  id2:any;
   correo:any;
   nombre:any;
   apellido:any;
   tieneFoto:any;
+  fotoPerfil:any;
+  path="http://localhost:8080/";
   ngOnInit(): void {
     
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
@@ -29,6 +33,7 @@ export class AcercaComponent implements OnInit {
       //prueba = data;
       //console.log("Datos personales: "+ data.nombre);
       this.nombre=data.nombre;
+      this.id=data.id;
       this.apellido=data.apellido;
       this.descripcion=data.descripcion;
       this.edad=data.edad;
@@ -38,11 +43,16 @@ export class AcercaComponent implements OnInit {
       this.provincia=data.domicilio.localidad.provincia;
       this.correo=data.correo;
       this.tieneFoto=data.fileDbs.id;
-    
+      this.fileUpload.tieneFotoFuncion(this.tieneFoto);
+      this.fileUpload.getFilesId(this.id).subscribe(data =>{
+        this.fotoPerfil = this.path + "imagen/" + data.id;
+        console.log("typo:" +typeof this.id);
+        console.log("hola " + this.id);
+        
+      })
     });
 
-    this.fileUpload.tieneFotoFuncion(this.tieneFoto);
-
+    
     
   }
   getCorreo(){

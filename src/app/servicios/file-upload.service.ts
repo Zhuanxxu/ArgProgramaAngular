@@ -39,14 +39,17 @@ export class FileUploadService {
       responseType: 'json'
     });
     return this.http.request(req);
-
+    
   }
   }
   getFiles(): Observable<any> {
-    console.log(this.tieneFoto==undefined);
     return this.http.get(`${this.baseUrl}/files`);
   }
   getFilesId(id: any): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/files/`+id);
+    debugger
+    console.log("que sos" + id)
+    console.log(`${this.baseUrl}/filesUnico/`+id+"/"+"perfil");
+    console.log("devuelve: " + this.http.get<any>(`${this.baseUrl}/filesUnico/`+id+"/"+"perfil"));
+    return this.http.get<any>(`${this.baseUrl}/filesUnico/`+id+"/"+"perfil");
   }
 }
