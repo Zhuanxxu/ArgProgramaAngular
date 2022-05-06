@@ -4,7 +4,7 @@
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
-      <form>
+      
         <div class="mb-3">
           <!--<label for="dateOfBirth">Date of birth</label>
           <div class="input-group">
@@ -14,16 +14,35 @@
             </div>-->
             
             <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="m-5"  style="margin-bottom: 1vh !important;">
-                <label for="descripcion">Descripcion</label>
-                <input type="text" class="form-control">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre">
+                <label for="titulo">Apellido</label>
+                <input type="text" class="form-control" formControlName="apellido">
+                <label for="titulo">Titulo</label>
+                <input type="text" class="form-control" formControlName="titulo">
+                <label for="edad">Edad</label>
+                <input type="text" class="form-control" formControlName="edad">
+                <label for="edad">Descripcion</label>
                 <textarea name="descripcion" type="text" class="form-control" cols="40" rows="5" id="descripcion" formControlName="descripcion"></textarea>
                 <button type="submit" class="btn btn-dark">Enviar</button>
             </form>
-          
+            
+            
         
         </div>
-      </form>
+      
+      
     </div>
+
+    <div class="container" style="width:500px">
+      <div class="my-3">
+        <h3>bezkoder.com</h3>
+        <h4>{{ title }}</h4>
+      </div>
+      <app-file-upload></app-file-upload>
+    </div>
+
+
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
     </div>

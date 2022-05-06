@@ -4,6 +4,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 
+
 @Component({
   selector: 'app-acerca-modal',
   templateUrl: './acerca-modal.component.html',
@@ -12,10 +13,17 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 export class AcercaModalComponent implements OnInit {
   closeResult = '';
   form:FormGroup;
-  constructor(private modalService: NgbModal,private portfolioService:PortfolioService,private formBuilder:FormBuilder) { 
+  title = 'Angular 13 File Upload';
+  constructor(private modalService: NgbModal,private portfolioService:PortfolioService,private formBuilder:FormBuilder) {
+ 
   this.form=this.formBuilder.group(
     {
-      descripcion:[''],
+      edad:"",
+      titulo:"",
+      nombre:"",
+      apellido:"",
+      descripcion:"",
+
     }
     )
   }
@@ -45,9 +53,14 @@ export class AcercaModalComponent implements OnInit {
     //console.log("DATA:" + this.form.value.username);
     //console.log("DATA:" + this.Email);
     this.portfolioService.actualizarDatos(this.form.value).subscribe(data=>{
-      //console.log("DATA:" + JSON.stringify(data));
-
+      
+      //console.log("cambios:" + JSON.stringify(data));
     })
   }
+  afuConfig = {
+    uploadAPI: {
+      url:"https://api.imgbb.com/1/upload?expiration=600&key=c3b77a320710e7709ac0d54356f4685e" 
+    }
+};
 
 }

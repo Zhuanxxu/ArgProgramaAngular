@@ -17,6 +17,7 @@ import { InterceptorService } from './servicios/interceptor.service';
 import { CrearCuentaComponent } from './componentes/crear-cuenta/crear-cuenta.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AcercaModalComponent } from './componentes/modals/acerca-modal/acerca-modal.component';
+import { FileUploadComponent } from './componentes/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AcercaModalComponent } from './componentes/modals/acerca-modal/acerca-m
     PortfolioComponent,
     CrearCuentaComponent,
     AcercaModalComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,

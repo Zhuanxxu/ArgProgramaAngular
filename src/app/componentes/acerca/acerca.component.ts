@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileUploadService } from 'src/app/servicios/file-upload.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class AcercaComponent implements OnInit {
 
-  constructor(private datosPorfolio:PortfolioService) { }
+  constructor(private datosPorfolio:PortfolioService, private fileUpload: FileUploadService) { }
   descripcion:any;
   edad:any;
   titulo:any;
@@ -17,12 +18,18 @@ export class AcercaComponent implements OnInit {
   provincia:any;
   prueba:any;
   correo:any;
+  nombre:any;
+  apellido:any;
+  tieneFoto:any;
   ngOnInit(): void {
+    
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
     
       //let prueba;
       //prueba = data;
-      console.log("Datos personales: "+ data.nombre);
+      //console.log("Datos personales: "+ data.nombre);
+      this.nombre=data.nombre;
+      this.apellido=data.apellido;
       this.descripcion=data.descripcion;
       this.edad=data.edad;
       this.titulo=data.titulo;
@@ -30,13 +37,12 @@ export class AcercaComponent implements OnInit {
       this.ciudad=data.domicilio.localidad.ciudad;
       this.provincia=data.domicilio.localidad.provincia;
       this.correo=data.correo;
+      this.tieneFoto=data.fileDbs.id;
+    
+    });
 
-    });
-    this.datosPorfolio.obtenerHello().subscribe(data=>{
-    this.prueba=data;
-    console.log(this.prueba);
-    console.log(typeof this.prueba);
-    });
+    this.fileUpload.tieneFotoFuncion(this.tieneFoto);
+
     
   }
   getCorreo(){
