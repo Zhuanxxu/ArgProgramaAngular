@@ -1,17 +1,23 @@
 <div class="container-fluid">
-
-    <!--Soft Skills-->
+    
+    <!--Hard Skills-->
     <div class="row">
         <div class="row">
-            <h2>Soft Skills</h2>
+            <div class="col-md-11">
+                <h2>Hard Skills</h2>
+            </div>
+            <div class="col-md-1">
+                <app-skill-modals></app-skill-modals>
+            </div>
         </div>
+
         <div class="row">
-            <ng-container *ngFor="let skill of skills;let indice=index">
-                <div class="col-4" *ngIf="indice>2">
+            <ng-container *ngFor="let skill of hardSkills ;let i=index">
+                <div class="col-4">
                     
                     <div class="row">
                         <div class="col-12 col-img-skills">
-                            <img src="{{skill.urlFoto}}" class="img-fluid img-formacion mx-auto" alt="">
+                            <img src="{{hardPaths[i]}}" class="img-fluid img-formacion mx-auto" alt="">
                             <div class="progress barra-skills mx-auto">
                                 <div class="progress-bar" role="progressbar" style="width: {{skill.porcentajeCompleto}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{skill.porcentajeCompleto}}%</div>
                             </div>
@@ -23,17 +29,19 @@
         </div>
     </div>
 
-    <!--Hard Skills-->
+       
+
+    <!--Soft Skills-->
     <div class="row">
         <div class="row">
-            <h2>Hard Skills</h2>
+            <h2>Soft Skills</h2>
         </div>
-        <ng-container *ngFor="let skill of skills;let indice=index">
-            <div class="col-4" *ngIf="indice<=2">
+        <ng-container *ngFor="let skill of softSkills;let indice=index">
+            <div class="col-4">
                 
                 <div class="row">
                     <div class="col-12 col-img-skills">
-                        <img src="{{skill.urlFoto}}" class="img-fluid img-formacion mx-auto" alt="">
+                        <img src="{{softPaths[indice]}}" class="img-fluid img-formacion mx-auto" alt="">
                         <div class="progress barra-skills mx-auto">
                             <div class="progress-bar" role="progressbar" style="width: {{skill.porcentajeCompleto}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{skill.porcentajeCompleto}}%</div>
                         </div>

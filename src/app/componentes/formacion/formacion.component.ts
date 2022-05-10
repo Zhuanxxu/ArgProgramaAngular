@@ -28,14 +28,33 @@ export class FormacionComponent implements OnInit {
   formaciones:any;
   fotosEducaciones:any;
   alls:any;
+  path1:any;
+  path2:any;
+  path3:any;
+  pathPrueba:any[] = [];
   constructor(private datosPorfolio:PortfolioService) { }
 
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
       this.alls=data;
       this.fotosEducaciones=data.fileDbs
+      
+      for (let i = 1; i <= 3; i++) {
+        this.pathPrueba.push(this.datosPorfolio.url +  data.fileDbs.filter((element: { personaId: number; })=>  element.personaId == 1).find(
+          (        element: { lugar: string; }) => element.lugar == "Educacion " + i.toString()
+          ).path);
+      }
+      console.log(this.pathPrueba);
+      data.fileDbs.forEach((element: { path: any; }) => {
+        console.log(element.path);
+      });
+      console.log(data.fileDbs.filter((element: { personaId: number; })=>  element.personaId == 1).find(
+        (        element: { lugar: string; }) => element.lugar == "Educacion 1"
+        ));
+      console.log(typeof data.fileDbs[0].personaId);
+      this.path2 = "http://localhost:8080/" + data.fileDbs[4].path
+      this.path3 = "http://localhost:8080/" + data.fileDbs[3].path
       this.formaciones=data.educacion;
-      this.fotoLogo1=data.educacion[0].urlFoto;
       this.titulo1=data.educacion[0].titulo;
       this.fechaInicio1=data.educacion[0].fechaIni.substring(0,4);
       this.fechaFin1=data.educacion[0].fechaFin.substring(0,4);

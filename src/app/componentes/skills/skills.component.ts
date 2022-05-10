@@ -28,9 +28,71 @@ export class SkillsComponent implements OnInit {
   porcentaje5:any;
   porcentaje6:any;
   skills:any;
+  hardSkills:any[]=[];
+  softSkills:any[]=[];
+  hardPaths:any[]=[];
+  softPaths:any[]=[];
+  test:any;
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
       this.skills=data.skills;
+
+      data.skills.filter((element: { tipo: string; })=>  element.tipo == "hard").forEach((element: any) => {
+        this.hardSkills.push(element)
+      });
+
+      data.skills.filter((element: { tipo: string; })=>  element.tipo == "soft").forEach((element: any) => {
+        this.softSkills.push(element)
+      });
+
+      
+      
+      data.fileDbs.filter((element: { personaId: number; })=>  element.personaId == 1).filter((value: { lugar: string; })=>  value.lugar.includes("hardskill")).forEach((element: { path: string; }) => {
+        this.hardPaths.push(this.datosPorfolio.url + element.path);
+      });
+
+      /*this.hardPaths.sort(function (a, b) {
+        if (a.lugar > b.lugar) {
+          return 1;
+        }
+        if (a.lugar < b.lugar) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });*/
+
+      data.fileDbs.filter((element: { personaId: number; })=>  element.personaId == 1).filter((value: { lugar: string; })=>  value.lugar.includes("softskill")).forEach((element: { path: string; }) => {
+        this.softPaths.push(this.datosPorfolio.url + element.path);
+      });;
+      this.softPaths.sort();
+      this.hardPaths.sort();
+
+      /*this.softPaths.sort(function (a, b) {
+        if (a.lugar > b.lugar) {
+          return 1;
+        }
+        if (a.lugar < b.lugar) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });*/
+
+      console.log(this.hardPaths);
+      console.log(this.softPaths);
+      console.log(this.hardSkills);
+      console.log(this.softSkills);
+      /*data.fileDbs.filter((element: { personaId: number; })=>  element.personaId == 1).forEach((element: any[],index: { toString: () => string; })=> {
+        if 
+        this.hardPath2.push(this.datosPorfolio.url + element.find((value: { lugar: string; }) => value.lugar == "hardskill " + index.toString()
+          ).path);
+      });*/
+      /*console.log(data.fileDbs.filter((element: { personaId: number; })=>  element.personaId == 1).filter((value: { lugar: string; })=>  value.lugar.includes("hardskill")));
+      console.log(this.hardPath2);
+      console.log(this.hardPath);*/
+
+
       this.pathFoto1=data.skills[0].urlFoto;
       this.pathFoto2=data.skills[1].urlFoto;
       this.pathFoto3=data.skills[2].urlFoto;
@@ -50,6 +112,8 @@ export class SkillsComponent implements OnInit {
       this.porcentaje5=data.skills[4].porcentajeCompleto;
       this.porcentaje6=data.skills[5].porcentajeCompleto;
     });
+
+    
   }
 
 }

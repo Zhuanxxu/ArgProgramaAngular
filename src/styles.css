@@ -11,6 +11,12 @@ svg:not(:root).svg-inline--fa{overflow:visible}.svg-inline--fa{display:inline-bl
     object-fit: cover;
 }
 
+div.centrado {
+    align-items: flex-end;
+    display: flex;
+    justify-content: center;
+}
+
 .about-container{
     margin-top: 1%;
 }

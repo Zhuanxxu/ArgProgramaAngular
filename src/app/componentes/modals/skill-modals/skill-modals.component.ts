@@ -1,43 +1,70 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FileUploadService } from 'src/app/servicios/file-upload.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
-  selector: 'app-formacion-modal',
-  templateUrl: './formacion-modal.component.html',
-  styleUrls: ['./formacion-modal.component.css']
+  selector: 'app-skill-modals',
+  templateUrl: './skill-modals.component.html',
+  styleUrls: ['./skill-modals.component.css']
 })
-export class FormacionModalComponent implements OnInit {
+export class SkillModalsComponent implements OnInit {
   closeResult = '';
   form:FormGroup;
+  message= '';
+  progress = 0;
   selectedFiles?: FileList;
   currentFile?: File;
-  progress = 0;
-  message = '';
   name = new FormControl('');
-  path="http://localhost:8080/";
-  image:any;
-  aux:any;
-  validador= '';
-  selectorEducacion: string ='';
-  constructor(private modalService: NgbModal,private portfolioService:PortfolioService,private formBuilder:FormBuilder,private uploadService: FileUploadService) {
- 
-  this.form=this.formBuilder.group(
-    {
-      instituto:"",
-      porcentaje_terminacion:"",
-      titulo:"",
-      descripcion:"",
-      ubicacion:""
+  validador = '';
+  hardSkills:any[]=[];
+  softSkills:any[]=[];
 
-    }
-    )
-  }
+  constructor(private modalService: NgbModal,private portfolioService:PortfolioService,private formBuilder:FormBuilder,private uploadService: FileUploadService) {
+    this.form=this.formBuilder.group(
+      {
+        ubicacion:"",
+        descripcion:"",
+        porcentajeCompleto:"",
+  
+      }
+      )
+   }
+
   ngOnInit(): void {
-    console.log(this.selectorEducacion);
+
+    this.portfolioService.obtenerDatos().subscribe(data =>{
+      this.hardSkills = data.fileDbs.filter((element: { personaId: number; })=>  element.personaId == 1).filter((value: { lugar: string; })=>  value.lugar.includes("hardskill"));
+      this.softSkills = data.fileDbs.filter((element: { personaId: number; })=>  element.personaId == 1).filter((value: { lugar: string; })=>  value.lugar.includes("softskill"));
+      
+      this.hardSkills.sort(function (a, b) {
+        if (a.lugar > b.lugar) {
+          return 1;
+        }
+        if (a.lugar < b.lugar) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });
+
+      this.softSkills.sort(function (a, b) {
+        if (a.lugar > b.lugar) {
+          return 1;
+        }
+        if (a.lugar < b.lugar) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });
+
+      console.log(this.hardSkills);
+      console.log(this.softSkills);
+    })
+
   }
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -60,39 +87,25 @@ export class FormacionModalComponent implements OnInit {
   onEnviar(event: Event)
   {
     event.preventDefault;
-    console.log('resultado' + this.form.value.ubicacion);
-    console.log('resultado' + this.form.value.instituto);
     //console.log("DATA:" + this.form.value.username);
     //console.log("DATA:" + this.Email);
-    this.portfolioService.actualizarDatosEducacion(this.form.value).subscribe(data=>{
+    this.portfolioService.obtenerDatos().subscribe(data=>{
+
+    })
+    this.portfolioService.actualizarDatosSkills(this.form.value).subscribe(data=>{
       
       //console.log("cambios:" + JSON.stringify(data));
     })
   }
 
-  selectFile(event: any): void {
-    if(this.name.value == ''){
-
-      this.validador = "No se ha seleccionado elemento a modificar"
-
-    } else {
-
-      this.selectedFiles = event.target.files;
-
-    }
-  }
-
-  elegirPosicion(event: any): void {
-    this.selectorEducacion = event.value;
-  }
-
   upload(): void {
     this.progress = 0;
+    console.log(this.name.value);
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       if (file) {
         this.currentFile = file;
-        this.uploadService.upload(this.currentFile,"Educacion " + this.name.value).subscribe({
+        this.uploadService.upload(this.currentFile, this.name.value).subscribe({
           next: (event: any) => {
             if (event.type === HttpEventType.UploadProgress) {
               this.progress = Math.round(100 * event.loaded / event.total);
@@ -120,6 +133,16 @@ export class FormacionModalComponent implements OnInit {
       this.selectedFiles = undefined;
     }
   }
-  
 
+  selectFile(event: any): void {
+    if(this.name.value == ''){
+
+      this.validador = "No se ha seleccionado elemento a modificar"
+
+    } else {
+
+      this.selectedFiles = event.target.files;
+
+    }
+  }
 }

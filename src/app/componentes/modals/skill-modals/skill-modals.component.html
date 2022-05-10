@@ -1,0 +1,90 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Actualizar Skills</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      
+        <div class="mb-3">
+          <!--<label for="dateOfBirth">Date of birth</label>
+          <div class="input-group">
+                <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div>-->
+            
+            <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="m-5"  style="margin-bottom: 1vh !important;">
+                <label >Posicion de elemento a modificar</label>
+                <select class="form-select"  aria-label="Default select example" formControlName="ubicacion">
+                  <option value="4" >hardskill 1</option>
+                  <option value="5">hardskill 2</option>
+                  <option value="6">hardskill 3</option>
+                  <option value="1">softskill 1</option>
+                  <option value="2">softskill 2</option>
+                  <option value="3">softskill 3</option>
+                </select>
+                <label for="nombre">Descripcion</label>
+                <input type="text" class="form-control" formControlName="descripcion">
+                <label for="titulo">Porcentaje Completo</label>
+                <input type="text" class="form-control" formControlName="porcentajeCompleto">
+            
+                <button type="submit" class="btn btn-dark">Enviar</button>
+            </form>
+            
+            
+        
+        </div>
+      
+      
+    </div>
+
+    <!--comienza file upload-->
+    <div class="container" style="width:500px">
+        <div class="my-3">
+          <h3>Foto del skill</h3>
+          
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <label class="btn btn-default p-0">
+              <label >Posicion de elemento a modificar</label>
+                  <select class="form-control" [formControl]="name">
+                    <option *ngFor="let hardskill of hardSkills" value="{{hardskill.lugar}}" selected>{{hardskill.lugar}}</option>
+                    <option  *ngFor="let softskill of softSkills" value="{{softskill.lugar}}">{{softskill.lugar}}</option>
+                  </select>
+              <input type="file" (change)="selectFile($event)" />
+            </label>
+            <div *ngIf="validador" class="alert alert-secondary" role="alert">{{ validador }}</div>
+            
+          </div>
+          
+          <div class="col-4 centrado">
+              
+              
+            <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
+              Upload
+            </button>
+          </div>
+        </div>
+        <div *ngIf="currentFile" class="progress my-3">
+          <div
+            class="progress-bar progress-bar-info progress-bar-striped"
+            role="progressbar"
+            attr.aria-valuenow="{{ progress }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [ngStyle]="{ width: progress + '%' }"
+          >
+            {{ progress }}%
+          </div>
+        </div>
+      </div>
+
+    </ng-template>
+
+    <a class="btn-right">
+      <i class="fa fa-pen" (click)="open(content)"></i>
+    </a>
+    
+  
+  

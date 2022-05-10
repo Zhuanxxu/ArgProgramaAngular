@@ -10,6 +10,8 @@ import {HttpParams} from "@angular/common/http";
 export class PortfolioService {
   url:string="http://localhost:8080/"
   username:any;
+  softSkills:any[]=[];
+  hardSkills:any[]=[];
   constructor(private http:HttpClient) { }
   obtenerDatos():Observable<any>
   { 
@@ -33,7 +35,6 @@ export class PortfolioService {
 
   actualizarDatosPersona(parametros:any):Observable<any>
   {
-    
     let params = new HttpParams();
     //const params = new HttpParams({fromString: 'nombre=agustin'});
     params = params.append("nombre",parametros.nombre)
@@ -47,6 +48,7 @@ export class PortfolioService {
     console.log(this.http.put<any>('http://localhost:8080/personas/editar/1',params))
     return this.http.put<any>('http://localhost:8080/personas/editar/1',params)
   }
+
   actualizarDatosEducacion(parametros:any):Observable<any>
   {
    
@@ -58,7 +60,32 @@ export class PortfolioService {
     params = params.append("descripcion", parametros.descripcion);
     //params = params.append("persona_id", parametros.persona_id);
   
-    console.log(this.http.put<any>('http://localhost:8080/educacion/editar/1',params))
-    return this.http.put<any>('http://localhost:8080/educacion/editar/1',params)
+    console.log(this.http.put<any>('http://localhost:8080/educacion/editar/'+ parametros.ubicacion,params))
+    return this.http.put<any>('http://localhost:8080/educacion/editar/'+ parametros.ubicacion,params)
+  }
+
+  actualizarDatosSkills(parametros:any):Observable<any>
+  {
+    let params = new HttpParams();
+    //const params = new HttpParams({fromString: 'nombre=agustin'});
+    params = params.append("descripcion",parametros.descripcion)
+    params = params.append("porcentaje_completo",parametros.porcentajeCompleto);
+    return this.http.put<any>('http://localhost:8080/skill/editar/'+ parametros.ubicacion,params)
+  }
+
+  setObjetoHardSkills(hard:any[]): void {
+    this.hardSkills = hard;
+  }
+
+  setObjetoSoftSkills(soft:any[]): void {
+    this.softSkills = soft;
+  }
+
+  getObjetosHardSkills():any[]{
+    return this.hardSkills;
+  }
+
+  getObjetosSoftSkills():any[]{
+    return this.softSkills;
   }
 }

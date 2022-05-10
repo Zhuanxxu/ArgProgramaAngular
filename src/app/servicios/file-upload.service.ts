@@ -23,26 +23,26 @@ export class FileUploadService {
 
   upload(file: File,lugar: string): Observable<HttpEvent<any>> {
 
-    if(typeof this.tieneFoto == "undefined"){
-    const formData: FormData = new FormData();
-    formData.append('file', file);
-    formData.append('lugar',lugar);
-    const req = new HttpRequest('POST', `${this.baseUrl}/upload/1`, formData, {
-      reportProgress: true,
-      responseType: 'json'
-    });
-    return this.http.request(req);
-  }else{
-    const formData: FormData = new FormData();
-    formData.append('file', file);
-    formData.append('lugar',lugar);
-    const req = new HttpRequest('PUT', `${this.baseUrl}/editarfoto/1`, formData, {
-      reportProgress: true,
-      responseType: 'json'
-    });
-    return this.http.request(req);
+    /*if(typeof this.tieneFoto == "undefined"){
+      const formData: FormData = new FormData();
+      formData.append('file', file);
+      formData.append('lugar',lugar);
+      const req = new HttpRequest('POST', `${this.baseUrl}/upload/1`, formData, {
+        reportProgress: true,
+        responseType: 'json'
+      });
+      return this.http.request(req);
+    }else{*/
+      const formData: FormData = new FormData();
+      formData.append('file', file);
+      formData.append('lugar',lugar);
+      const req = new HttpRequest('PUT', `${this.baseUrl}/editarfoto/1`, formData, {
+        reportProgress: true,
+        responseType: 'json'
+      });
+      return this.http.request(req);
     
-  }
+    //}
   }
 
   uploadFotoEducacion(file: File,lugar: string): Observable<HttpEvent<any>> {
@@ -68,6 +68,33 @@ export class FileUploadService {
     
   //}
   }
+
+  uploadFotoSkills(file: File,lugar: string): Observable<HttpEvent<any>> {
+
+    /*if(typeof this.tieneFoto == "undefined"){
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    formData.append('lugar',lugar);
+    const req = new HttpRequest('POST', `${this.baseUrl}/upload/1`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }else{*/
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    formData.append('lugar',lugar);
+    const req = new HttpRequest('PUT', `${this.baseUrl}/editarfoto/1`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+    
+  //}
+  }
+
+
+
 
 
   getFiles(): Observable<any> {

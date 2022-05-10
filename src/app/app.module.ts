@@ -10,7 +10,7 @@ import { ProyectosComponent } from './componentes/proyectos/proyectos.component'
 import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PortfolioService } from './servicios/portfolio.service';
 import { InterceptorService } from './servicios/interceptor.service';
@@ -20,6 +20,7 @@ import { AcercaModalComponent } from './componentes/modals/acerca-modal/acerca-m
 import { FileUploadComponent } from './componentes/file-upload/file-upload.component';
 import { PortadaModalComponent } from './componentes/modals/portada-modal/portada-modal.component';
 import { FormacionModalComponent } from './componentes/modals/formacion-modal/formacion-modal.component';
+import { SkillModalsComponent } from './componentes/modals/skill-modals/skill-modals.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +38,15 @@ import { FormacionModalComponent } from './componentes/modals/formacion-modal/fo
     FileUploadComponent,
     PortadaModalComponent,
     FormacionModalComponent,
+    SkillModalsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [PortfolioService,
   {provide:HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}

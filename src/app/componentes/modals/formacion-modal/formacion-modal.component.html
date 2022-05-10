@@ -1,6 +1,6 @@
 <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <h4 class="modal-title" id="modal-basic-title">Actualizar Formacion</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
@@ -13,7 +13,14 @@
             <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
             </div>-->
             
+            
             <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="m-5"  style="margin-bottom: 1vh !important;">
+                <label >Posicion de elemento a modificar</label>
+                <select class="form-select"  aria-label="Default select example" formControlName="ubicacion">
+                  <option value="1" >Primera</option>
+                  <option value="2">Segunda</option>
+                  <option value="3">Tercera</option>
+                </select>
                 <label for="instituto">instituto</label>
                 <input type="text" class="form-control" formControlName="instituto">
                 <label for="porcentaje_terminacion">porcentaje_terminacion</label>
@@ -41,12 +48,19 @@
         <div class="col-8">
             <img id="myimage" [src]='image' />
           <label class="btn btn-default p-0">
+            <label >Posicion de elemento a modificar</label>
+                <select class="form-control" [formControl]="name">
+                  <option [value]="1" value="1" selected>Primera</option>
+                  <option [value]="2" value="2">Segunda</option>
+                  <option [value]="3" value="3">Tercera</option>
+                </select>
             <input type="file" (change)="selectFile($event)" />
           </label>
+          <div *ngIf="validador" class="alert alert-secondary" role="alert">{{ validador }}</div>
           
         </div>
         
-        <div class="col-4">
+        <div class="col-4 centrado">
             
             
           <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">

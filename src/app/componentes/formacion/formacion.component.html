@@ -7,15 +7,18 @@
             <app-formacion-modal></app-formacion-modal>
         </div>
     </div>
-    <div class="row row-formacion" *ngFor="let formacion of formaciones">
+    <div class="row row-formacion" *ngFor="let formacion of formaciones;let i = index">
         <div class="col-2 my-auto">
-            <img class="img-fluid img-formacion" src="{{formacion.urlFoto}}" style="background-color: white;">
+            <img class="img-fluid img-formacion" src="{{pathPrueba[i]}}" style="background-color: white;">
         </div>
         <div class="col-10">
             <h3>{{formacion.titulo}} - {{formacion.instituto}}</h3>
-            <p><b>{{formacion.fechaIni}}</b> al <b>{{formacion.fechaFin}}</b></p>
+            <p><b>{{formacion.fechaInicio}}</b> al <b>{{formacion.fechaFin}}</b></p>
             <p>{{formacion.descripcion}}</p>
         </div>
     </div>
+
+    
+
 
 </div>
