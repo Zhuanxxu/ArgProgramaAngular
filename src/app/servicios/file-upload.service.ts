@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FileUploadService {
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'https://thawing-citadel-18441.herokuapp.com';
   tieneFoto:any;
   hola:any;
   tieneFotoEducacion:any;

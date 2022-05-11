@@ -24,7 +24,7 @@ export class AcercaComponent implements OnInit {
   apellido:any;
   tieneFoto:any;
   fotoPerfil:any;
-  path="http://localhost:8080/";
+  path="https://thawing-citadel-18441.herokuapp.com/";
   lista:any;
   ngOnInit(): void {
     

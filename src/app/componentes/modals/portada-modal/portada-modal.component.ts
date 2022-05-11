@@ -14,7 +14,7 @@ export class PortadaModalComponent implements OnInit {
   currentFile?: File;
   progress = 0;
   message = '';
-  path="http://localhost:8080/";
+  path="https://thawing-citadel-18441.herokuapp.com/";
   aux:any;
   closeResult = '';
   constructor(private uploadService: FileUploadService,private sanitizer: DomSanitizer,private modalService: NgbModal) { }

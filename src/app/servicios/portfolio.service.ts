@@ -8,7 +8,7 @@ import {HttpParams} from "@angular/common/http";
   providedIn: 'root'
 })
 export class PortfolioService {
-  url:string="http://localhost:8080/"
+  url:string="https://thawing-citadel-18441.herokuapp.com/"
   username:any;
   softSkills:any[]=[];
   hardSkills:any[]=[];
@@ -45,8 +45,8 @@ export class PortfolioService {
     const prueba = {nombre:"ag"}
     console.log("aca parametros: " + params)
     console.log("aca parametros: " + prueba)
-    console.log(this.http.put<any>('http://localhost:8080/personas/editar/1',params))
-    return this.http.put<any>('http://localhost:8080/personas/editar/1',params)
+    console.log(this.http.put<any>('https://thawing-citadel-18441.herokuapp.com/personas/editar/1',params))
+    return this.http.put<any>('https://thawing-citadel-18441.herokuapp.com/personas/editar/1',params)
   }
 
   actualizarDatosEducacion(parametros:any):Observable<any>
@@ -60,8 +60,8 @@ export class PortfolioService {
     params = params.append("descripcion", parametros.descripcion);
     //params = params.append("persona_id", parametros.persona_id);
   
-    console.log(this.http.put<any>('http://localhost:8080/educacion/editar/'+ parametros.ubicacion,params))
-    return this.http.put<any>('http://localhost:8080/educacion/editar/'+ parametros.ubicacion,params)
+    console.log(this.http.put<any>('https://thawing-citadel-18441.herokuapp.com/educacion/editar/'+ parametros.ubicacion,params))
+    return this.http.put<any>('https://thawing-citadel-18441.herokuapp.com/educacion/editar/'+ parametros.ubicacion,params)
   }
 
   actualizarDatosSkills(parametros:any):Observable<any>
@@ -70,7 +70,7 @@ export class PortfolioService {
     //const params = new HttpParams({fromString: 'nombre=agustin'});
     params = params.append("descripcion",parametros.descripcion)
     params = params.append("porcentaje_completo",parametros.porcentajeCompleto);
-    return this.http.put<any>('http://localhost:8080/skill/editar/'+ parametros.ubicacion,params)
+    return this.http.put<any>('https://thawing-citadel-18441.herokuapp.com/skill/editar/'+ parametros.ubicacion,params)
   }
 
   setObjetoHardSkills(hard:any[]): void {
@@ -98,7 +98,7 @@ export class PortfolioService {
     params = params.append("url",parametros.urlProyecto);
     params = params.append("persona_id","1");
     params = params.append("tecnologia_id", parametros.textoSelector);
-    return this.http.put<any>('http://localhost:8080/proyecto/editar/'+ parametros.idProyecto,params)
+    return this.http.put<any>('https://thawing-citadel-18441.herokuapp.com/proyecto/editar/'+ parametros.idProyecto,params)
   }
 
   verTecnologias():Observable<any>

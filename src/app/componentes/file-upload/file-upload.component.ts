@@ -15,7 +15,7 @@ export class FileUploadComponent implements OnInit {
   currentFile?: File;
   progress = 0;
   message = '';
-  path="http://localhost:8080/";
+  path="https://thawing-citadel-18441.herokuapp.com/";
   fileInfos?: Observable<any>;
   aux:any;
   constructor(private uploadService: FileUploadService,private sanitizer: DomSanitizer) { }

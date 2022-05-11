@@ -52,8 +52,8 @@ export class FormacionComponent implements OnInit {
         (        element: { lugar: string; }) => element.lugar == "Educacion 1"
         ));
       console.log(typeof data.fileDbs[0].personaId);
-      this.path2 = "http://localhost:8080/" + data.fileDbs[4].path
-      this.path3 = "http://localhost:8080/" + data.fileDbs[3].path
+      this.path2 = "https://thawing-citadel-18441.herokuapp.com/" + data.fileDbs[4].path
+      this.path3 = "https://thawing-citadel-18441.herokuapp.com/" + data.fileDbs[3].path
       this.formaciones=data.educacion;
       this.titulo1=data.educacion[0].titulo;
       this.fechaInicio1=data.educacion[0].fechaIni.substring(0,4);

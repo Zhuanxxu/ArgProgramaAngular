@@ -18,7 +18,7 @@ export class FormacionModalComponent implements OnInit {
   progress = 0;
   message = '';
   name = new FormControl('');
-  path="http://localhost:8080/";
+  path="https://thawing-citadel-18441.herokuapp.com/";
   image:any;
   aux:any;
   validador= '';

@@ -10,7 +10,7 @@ export class PortadaComponent implements OnInit {
 
   constructor(private datosPorfolio:PortfolioService) { }
   pathFotoPortada:any;
-  path="http://localhost:8080/";
+  path="https://thawing-citadel-18441.herokuapp.com/";
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
     
