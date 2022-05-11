@@ -21,6 +21,7 @@ import { FileUploadComponent } from './componentes/file-upload/file-upload.compo
 import { PortadaModalComponent } from './componentes/modals/portada-modal/portada-modal.component';
 import { FormacionModalComponent } from './componentes/modals/formacion-modal/formacion-modal.component';
 import { SkillModalsComponent } from './componentes/modals/skill-modals/skill-modals.component';
+import { ProyectoModalComponent } from './componentes/modals/proyecto-modal/proyecto-modal.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SkillModalsComponent } from './componentes/modals/skill-modals/skill-mo
     PortadaModalComponent,
     FormacionModalComponent,
     SkillModalsComponent,
+    ProyectoModalComponent,
   ],
   imports: [
     BrowserModule,

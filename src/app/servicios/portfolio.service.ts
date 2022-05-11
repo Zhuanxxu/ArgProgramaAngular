@@ -88,4 +88,22 @@ export class PortfolioService {
   getObjetosSoftSkills():any[]{
     return this.softSkills;
   }
+
+  actualizarDatosProyectos(parametros:any):Observable<any>
+  {
+    let params = new HttpParams();
+    //const params = new HttpParams({fromString: 'nombre=agustin'});
+    params = params.append("descripcion",parametros.descripcion)
+    params = params.append("nombre_proy",parametros.nombreProyecto);
+    params = params.append("url",parametros.urlProyecto);
+    params = params.append("persona_id","1");
+    params = params.append("tecnologia_id", parametros.textoSelector);
+    return this.http.put<any>('http://localhost:8080/proyecto/editar/'+ parametros.idProyecto,params)
+  }
+
+  verTecnologias():Observable<any>
+  {
+    return this.http.get<any>(this.url+"ver/tecnologias");
+  }
+
 }

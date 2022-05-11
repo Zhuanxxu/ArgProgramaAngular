@@ -1,0 +1,46 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Actualizar Proyectos</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      
+        <div class="mb-3">
+          <!--<label for="dateOfBirth">Date of birth</label>
+          <div class="input-group">
+                <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div>-->
+            
+            
+            <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="m-5"  style="margin-bottom: 1vh !important;">
+                <label >Posicion de elemento a modificar</label>
+                <select class="form-select"  aria-label="Default select example" formControlName="idProyecto">
+                  <option value="{{proyecto.id}}" *ngFor="let proyecto of proyectos">{{proyecto.nombreProy}}</option>
+                </select>
+                <label for="nombre_proy">Nombre del proyecto</label>
+                <input type="text" class="form-control" formControlName="nombreProyecto">
+                <label for="url">url del proyecto</label>
+                <input type="text" class="form-control" formControlName="urlProyecto">
+                <label>Tecnologias del proyecto</label>
+                <select class="form-select form-select-lg" formControlName="textoSelector" multiple  aria-label=".form-select-lg example">
+                    <option *ngFor="let tecnologia of tecnologias" value="{{tecnologia.id}}">{{tecnologia.tecnologias}}</option>
+                  </select>
+                <label for="descripcion">Descripcion</label>
+                <textarea name="descripcion" type="text" class="form-control" cols="40" rows="5" id="descripcion" formControlName="descripcion"></textarea>
+                <button type="submit" class="btn btn-dark">Enviar</button>
+            </form>
+            
+            
+        
+        </div>
+      
+      
+    </div>
+
+    </ng-template>
+
+    <a class="btn-right">
+      <i class="fa fa-pen" (click)="open(content)"></i>
+    </a>

@@ -1,11 +1,16 @@
 <div class="container-fluid">
     <div class="row">
-        <h2>Proyectos</h2>
+        <div class="col-11">
+            <h2>Proyectos</h2>
+        </div>
+        <div class="col-1">
+            <app-proyecto-modal></app-proyecto-modal>
+        </div>
     </div>
     <div class="row" *ngFor="let proyecto of proyectos">
         <a href="{{proyecto.url}}" class="no-underline"><b>{{proyecto.nombreProy}}</b></a>
         <p style="margin-bottom: 0.5rem;">{{proyecto.descripcion}}</p>
-        <p>   <span class="badge rounded-pill bg-dark" *ngFor="let tecnologia of proyecto.tecnologiaProyectos" style="margin-right: 0.5rem;">{{tecnologia.tecnologia.tecnologias}}</span> </p>
+        <p>   <span class="badge rounded-pill bg-dark" *ngFor="let tecnologia of proyecto.tecnologias" style="margin-right: 0.5rem;">{{tecnologia.tecnologias}}</span> </p>
     </div>
-
+      
 </div>
