@@ -10,9 +10,8 @@ import {HttpParams} from "@angular/common/http";
 export class PortfolioService {
   url:string="https://thawing-citadel-18441.herokuapp.com/"
   username:any;
-  softSkills:any[]=[];
-  hardSkills:any[]=[];
   constructor(private http:HttpClient) { }
+
   obtenerDatos():Observable<any>
   { 
     //return this.http.get<any>(this.url+"ver/personas");
@@ -21,13 +20,7 @@ export class PortfolioService {
     return this.http.get<any>(this.url+"test/"+this.username);
     
   }
-  obtenerHello():Observable<any>
-  {
-    
-    
-    return this.http.get<any>(this.url+"test/"+this.username);
- 
-  }
+
   setUsername(user:string){
     this.username = user;
     console.log(this.username);
@@ -53,46 +46,25 @@ export class PortfolioService {
   {
    
     let params = new HttpParams();
-    //const params = new HttpParams({fromString: 'nombre=agustin'});
     params = params.append("instituto",parametros.instituto)
     params = params.append("porcentaje_terminacion",parametros.porcentaje_terminacion);
     params = params.append("titulo",parametros.titulo);
     params = params.append("descripcion", parametros.descripcion);
-    //params = params.append("persona_id", parametros.persona_id);
   
-    console.log(this.http.put<any>('https://thawing-citadel-18441.herokuapp.com/educacion/editar/'+ parametros.ubicacion,params))
     return this.http.put<any>('https://thawing-citadel-18441.herokuapp.com/educacion/editar/'+ parametros.ubicacion,params)
   }
 
   actualizarDatosSkills(parametros:any):Observable<any>
   {
     let params = new HttpParams();
-    //const params = new HttpParams({fromString: 'nombre=agustin'});
     params = params.append("descripcion",parametros.descripcion)
     params = params.append("porcentaje_completo",parametros.porcentajeCompleto);
     return this.http.put<any>('https://thawing-citadel-18441.herokuapp.com/skill/editar/'+ parametros.ubicacion,params)
   }
 
-  setObjetoHardSkills(hard:any[]): void {
-    this.hardSkills = hard;
-  }
-
-  setObjetoSoftSkills(soft:any[]): void {
-    this.softSkills = soft;
-  }
-
-  getObjetosHardSkills():any[]{
-    return this.hardSkills;
-  }
-
-  getObjetosSoftSkills():any[]{
-    return this.softSkills;
-  }
-
   actualizarDatosProyectos(parametros:any):Observable<any>
   {
     let params = new HttpParams();
-    //const params = new HttpParams({fromString: 'nombre=agustin'});
     params = params.append("descripcion",parametros.descripcion)
     params = params.append("nombre_proy",parametros.nombreProyecto);
     params = params.append("url",parametros.urlProyecto);

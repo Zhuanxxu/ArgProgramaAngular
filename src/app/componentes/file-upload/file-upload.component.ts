@@ -21,12 +21,6 @@ export class FileUploadComponent implements OnInit {
   constructor(private uploadService: FileUploadService,private sanitizer: DomSanitizer) { }
   image: any;
   ngOnInit(): void {
-
-    /*console.log(this.acerca.tieneFoto)
-    this.uploadService.getFilesId(1).subscribe(data =>{
-      this.image = this.path + "imagen/" + data.id;
-
-    })*/
   }
 
   selectFile(event: any): void {
@@ -47,11 +41,6 @@ export class FileUploadComponent implements OnInit {
               this.progress = Math.round(100 * event.loaded / event.total);
             } else if (event instanceof HttpResponse) {
               this.message = event.body.message;
-              //this.fileInfos = this.uploadService.getFilesId(1);
-              
-              //this.aux=JSON.stringify(this.uploadService.getFilesId(1));
-              //this.image = this.path + this.aux.id+"/perfil";
-              //console.log("esta es " + this.aux);
             }
           },
           error: (err: any) => {

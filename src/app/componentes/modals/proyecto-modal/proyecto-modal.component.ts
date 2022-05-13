@@ -12,11 +12,9 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 export class ProyectoModalComponent implements OnInit {
 
   form:FormGroup;
-  selector = new FormControl('');
   closeResult = '';
   proyectos:any;
   tecnologias:any[] = new Array;
-  textoSelector:any;
 
   constructor(private modalService: NgbModal,private portfolioService:PortfolioService,private formBuilder:FormBuilder) { 
     this.form=this.formBuilder.group(
@@ -35,13 +33,12 @@ export class ProyectoModalComponent implements OnInit {
 
     this.portfolioService.obtenerDatos().subscribe(data =>{
       this.proyectos=data.proyectos;
-      console.log(this.proyectos);
     
     });
+
     this.portfolioService.verTecnologias().subscribe(data =>{
 
       this.tecnologias = data;
-      console.log(this.tecnologias);
     })
   
   }
@@ -67,16 +64,9 @@ export class ProyectoModalComponent implements OnInit {
   onEnviar(event: Event)
   {
     event.preventDefault;
-    console.log('resultado' + this.form.value.descripcion);
-    console.log('resultado' + this.form.value.idProyecto);
-    console.log("resultado " + this.form.value.textoSelector);
-    //console.log(JSON.parse("[" + this.form.value.textoSelector + "]")[0]);
-  
-    //console.log("DATA:" + this.form.value.username);
-    //console.log("DATA:" + this.Email);
+
     this.portfolioService.actualizarDatosProyectos(this.form.value).subscribe(data=>{
       
-      //console.log("cambios:" + JSON.stringify(data));
     })
   }
 

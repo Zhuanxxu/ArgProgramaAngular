@@ -15,24 +15,17 @@ export class PortadaModalComponent implements OnInit {
   progress = 0;
   message = '';
   path="https://thawing-citadel-18441.herokuapp.com/";
-  aux:any;
   closeResult = '';
+
   constructor(private uploadService: FileUploadService,private sanitizer: DomSanitizer,private modalService: NgbModal) { }
-  image: any;
-  ngOnInit(): void {
+  
 
-    /*console.log(this.acerca.tieneFoto)
-    this.uploadService.getFilesId(1).subscribe(data =>{
-      this.image = this.path + "imagen/" + data.id;
-
-    })*/
-  }
+  ngOnInit(): void {}
 
   selectFile(event: any): void {
-    this.selectedFiles = event.target.files;
-      
-      
+    this.selectedFiles = event.target.files;    
   }
+
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -61,11 +54,6 @@ export class PortadaModalComponent implements OnInit {
               this.progress = Math.round(100 * event.loaded / event.total);
             } else if (event instanceof HttpResponse) {
               this.message = event.body.message;
-              //this.fileInfos = this.uploadService.getFilesId(1);
-              
-              //this.aux=JSON.stringify(this.uploadService.getFilesId(1));
-              //this.image = this.path + this.aux.id+"/perfil";
-              //console.log("esta es " + this.aux);
             }
           },
           error: (err: any) => {

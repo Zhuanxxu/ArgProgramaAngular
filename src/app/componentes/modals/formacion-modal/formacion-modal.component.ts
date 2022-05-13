@@ -36,9 +36,8 @@ export class FormacionModalComponent implements OnInit {
     }
     )
   }
-  ngOnInit(): void {
-    console.log(this.selectorEducacion);
-  }
+  ngOnInit(): void {}
+
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -98,11 +97,6 @@ export class FormacionModalComponent implements OnInit {
               this.progress = Math.round(100 * event.loaded / event.total);
             } else if (event instanceof HttpResponse) {
               this.message = event.body.message;
-              //this.fileInfos = this.uploadService.getFilesId(1);
-              
-              //this.aux=JSON.stringify(this.uploadService.getFilesId(1));
-              //this.image = this.path + this.aux.id+"/perfil";
-              //console.log("esta es " + this.aux);
             }
           },
           error: (err: any) => {

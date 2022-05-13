@@ -60,9 +60,6 @@ export class SkillModalsComponent implements OnInit {
         // a must be equal to b
         return 0;
       });
-
-      console.log(this.hardSkills);
-      console.log(this.softSkills);
     })
 
   }
@@ -87,14 +84,11 @@ export class SkillModalsComponent implements OnInit {
   onEnviar(event: Event)
   {
     event.preventDefault;
-    //console.log("DATA:" + this.form.value.username);
-    //console.log("DATA:" + this.Email);
     this.portfolioService.obtenerDatos().subscribe(data=>{
 
     })
     this.portfolioService.actualizarDatosSkills(this.form.value).subscribe(data=>{
-      
-      //console.log("cambios:" + JSON.stringify(data));
+
     })
   }
 
@@ -111,11 +105,6 @@ export class SkillModalsComponent implements OnInit {
               this.progress = Math.round(100 * event.loaded / event.total);
             } else if (event instanceof HttpResponse) {
               this.message = event.body.message;
-              //this.fileInfos = this.uploadService.getFilesId(1);
-              
-              //this.aux=JSON.stringify(this.uploadService.getFilesId(1));
-              //this.image = this.path + this.aux.id+"/perfil";
-              //console.log("esta es " + this.aux);
             }
           },
           error: (err: any) => {

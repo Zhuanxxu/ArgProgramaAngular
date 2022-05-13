@@ -16,7 +16,7 @@ export class AcercaModalComponent implements OnInit {
 
   constructor(private modalService: NgbModal,private portfolioService:PortfolioService,private formBuilder:FormBuilder) {
  
-  this.form=this.formBuilder.group(
+    this.form=this.formBuilder.group(
     {
       edad:"",
       titulo:"",
@@ -24,11 +24,12 @@ export class AcercaModalComponent implements OnInit {
       apellido:"",
       descripcion:"",
 
-    }
-    )
+    })
+
   }
-  ngOnInit(): void {
-  }
+
+  ngOnInit(): void {}
+
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -50,17 +51,8 @@ export class AcercaModalComponent implements OnInit {
   onEnviar(event: Event)
   {
     event.preventDefault;
-    //console.log("DATA:" + this.form.value.username);
-    //console.log("DATA:" + this.Email);
     this.portfolioService.actualizarDatosPersona(this.form.value).subscribe(data=>{
-      
-      //console.log("cambios:" + JSON.stringify(data));
+ 
     })
   }
-  afuConfig = {
-    uploadAPI: {
-      url:"https://api.imgbb.com/1/upload?expiration=600&key=c3b77a320710e7709ac0d54356f4685e" 
-    }
-};
-
 }
